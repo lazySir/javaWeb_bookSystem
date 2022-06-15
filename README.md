@@ -28,7 +28,13 @@ c3p0 、echarts ajax
 
 ![1655307021103](https://user-images.githubusercontent.com/101635531/173866664-11b17f97-7706-42b9-9140-bf4b6d49032a.png)
 
-![1655306393862](https://user-images.githubusercontent.com/101635531/173864344-fa505e97-3244-4636-abd1-93fe85843911.png)
+![1655307105374](https://user-images.githubusercontent.com/101635531/173866948-7cddb3b2-6c79-4d2b-8563-b550155c34e1.png)
+
+
+![1655307084756](https://user-images.githubusercontent.com/101635531/173866883-0db2b617-1f51-4f09-9a08-d5aedde74c72.png)
+
+![1655307128080](https://user-images.githubusercontent.com/101635531/173867009-d9674010-c112-46a0-ab27-9d039d1358e4.png)
+
 
 
 
