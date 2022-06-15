@@ -9,7 +9,7 @@ JavaWeb 、 servlet
 
 # 包
 
-c3p0
+c3p0 、echarts ajax
 
 # 运行项目
 
