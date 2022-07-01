@@ -139,13 +139,10 @@ public class BookServlet extends HttpServlet {
             file.mkdir();//创建文件夹
         }
         factory.setRepository(file);
-
         //2.文件上传+表单数据
         ServletFileUpload  fileUpload = new ServletFileUpload(factory);
-
         //3.将请求解析成一个个FileItem(文件+表单元素)
         List<FileItem> fileItems = fileUpload.parseRequest(req);
-
         //4.遍历FileItem
         Book book  =new Book();
         for(FileItem  item: fileItems){
@@ -251,8 +248,8 @@ public class BookServlet extends HttpServlet {
      */
     private void query(HttpServletRequest req, HttpServletResponse resp, PrintWriter out) throws ServletException, IOException {
         //1.获取信息(页数，页码,信息)
-        int pageSize = 3;
-        int pageCount = bookBiz.getPageCount( pageSize);
+        int pageSize = 5;
+        int pageCount = bookBiz.getPageCount( pageSize);//根据计算获取总页数
         int pageIndex = Integer.parseInt(req.getParameter("pageIndex"));
         if(pageIndex<1){
             pageIndex = 1;
@@ -295,13 +292,10 @@ public class BookServlet extends HttpServlet {
             file.mkdir();//创建文件夹
         }
         factory.setRepository(file);
-
         //2.文件上传+表单数据
         ServletFileUpload  fileUpload = new ServletFileUpload(factory);
-
         //3.将请求解析成一个个FileItem(文件+表单元素)
         List<FileItem> fileItems = fileUpload.parseRequest(req);
-
         //4.遍历FileItem
         Book book  =new Book();
         for(FileItem  item: fileItems){
@@ -335,7 +329,6 @@ public class BookServlet extends HttpServlet {
                           book.setAddress(value);
                           break;
                   }
-
               }else {
                   //4.2 文件: 图片的文件名  文城.png
                   String fileName = item.getName();
@@ -353,14 +346,10 @@ public class BookServlet extends HttpServlet {
                   //数据库表中的路径 ：Images/cover/101-1.png：相对项目的根目录的位置
                   String dbPath  = "Images/cover/"+fileName;
                   book.setPic(dbPath);
-
                   //4.3 保存文件
                   item.write(new File(filePath));
-
               }
-
         }
-
         //5.将信息保存到数据库
         int count = bookBiz.add(book);
         if(count>0){

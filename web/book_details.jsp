@@ -60,9 +60,9 @@
                                                         <td>编号：</td>
                                                         <td width="20%"><input class="text" type="text" name="bookId"  value="${book.id}" disabled="disabled"/></td>
                                                         <td rowspan="9" valign="top" >
-                                                            <fieldset style="width: 220px; height: 360px;">
+                                                            <fieldset style="margin-left:50px;width: 220px; height: 360px;">
                                                              <legend>封面</legend>
-                                                             <img src="${book.pic}" width="200px"; height="350px"/>
+                                                             <img src="${book.pic}"  width="200px"; height="350px"/>
                                                             </fieldset>
                                                         </td>
                                                         <td width="2%">&nbsp;</td>
@@ -113,7 +113,7 @@
                                                     <tr>
                                                         <td width="2%">&nbsp;</td>
                                                         <td>存放地址:</td>
-                                                        <td width="20%"><input class="text"  type="text" name="address" value="${book.address}" readonly/></td>
+                                                        <td width="20%"><input class="text"  type="text" name="address" value="${book.address}" disabled="disabled"/></td>
                                                         <td></td>
                                                         <td width="2%">&nbsp;</td>
                                                     </tr>

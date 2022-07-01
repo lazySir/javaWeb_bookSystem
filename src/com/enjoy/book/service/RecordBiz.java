@@ -84,7 +84,7 @@ public class RecordBiz {
                 Book book = bookDao.getById(bookId);
                 //调用价格
                 double price = book.getPrice();
-                double regPrice = price*0.3f;
+                double regPrice = price*0.3f; //押金
                 total += regPrice;
                 //算押金
                 //调用recordDao-->insert

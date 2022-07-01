@@ -100,8 +100,8 @@ public class BookDao {
      */
     public List<Book>  getByPage(int pageIndex,int pageSize) throws SQLException {
         Connection conn  = DBHelper.getConnection();
-        String sql = "select * from book limit ?,?";
-        int offset = (pageIndex-1)*pageSize;
+        String sql = "select * from book limit ?,?"; //limit 第几条开始 查几条
+        int offset = (pageIndex-1)*pageSize;//跳过当前页减一*条数的条数
         List<Book> books = runner.query(conn,sql,new BeanListHandler<Book>(Book.class),offset,pageSize);
         DBHelper.close(conn);
         return  books;

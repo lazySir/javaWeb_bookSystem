@@ -47,7 +47,7 @@ public class UserDao {
     public static void main(String[] args) {
         User user = null;
         try {
-            user = new UserDao().getUser("super1","123456");
+            user = new UserDao().getUser("admin","admin");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

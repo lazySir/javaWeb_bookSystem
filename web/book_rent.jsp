@@ -37,7 +37,6 @@
             mills += count*24*60*60*1000;
             //4.转成日期出来
             dateObj.setMilliseconds(mills);
-
             //5.时间转成字符串
             var year = dateObj.getFullYear();
             var month = dateObj.getMonth()+1;//0~ 11
@@ -47,10 +46,11 @@
 
         }
 
-
+        //会员编号 确定点击事件
+        // 规定返回要设置的属性值的函数。
+        //index - 检索集合中元素的 index 位置。
+        //currentvalue - 检索被选元素的当前属性值。
         $(function(){
-
-
             $("#btnQueryBook").prop("disabled","disabled");
             $("#btnSubmit").prop("disabled","disabled");
             var member = null;
@@ -62,13 +62,14 @@
                    alert("请输入用户号");
                    return;
                 }
-                //2.调用js-ajax()/post()/get
+                //2.调用js-ajax()/post()/get  通过ajax给input框设置返回值
                 var url="member.let?type=doajax&idn="+content;
                 $.get(url,function(data,status){
                     //json字符串
                     //{"balance":145.0,"id":1,"idNumber":"300312199506150011","name":"andy","pwd":"andyliu","regdate":1627747200000,"tel":"13374645654","type":{"amount":"5","discount":100.0,"id":1,"keepDay":30,"name":"普通会员","recharge":100},"typeId":1}
                     console.log(data);
                     //1.json字符串--》json对象
+                    //如果key是一个对象 则会将其输出为String类型的字符串
                     member = JSON.parse(data);
                     console.log(member.balance+","+member.type.name+","+member.type.amount+","+member.name);
                     //2.给组件赋值
@@ -264,7 +265,7 @@
                                         <tr>
                                             <td colspan="8">
                                                
-                                                请输入:&nbsp;&nbsp;<input class="text" type="text" id="bookContent" name="bookContent" placeholder="输入条形码/书名"/>
+                                                请输入:&nbsp;&nbsp;<input class="text" type="text" id="bookContent" name="bookContent" placeholder="输入条形码\书名"/>
                                                 <input type="button" id="btnQueryBook" value="确定" style="width: 80px;"/>
                                                 <input type="button" id="btnSubmit" value="完成借阅" style="width: 80px;"/>
                                             </td>

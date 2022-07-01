@@ -60,7 +60,7 @@
                                                         <td width="2%">&nbsp;</td>
                                                         <td width="80px">原密码：</td>
                                                         <td width="150px"><input class="text" type="password" name="pwd" value=""/></td>
-                                                        <td class="err">*原密码不匹配</td>
+                                                        <td class="err">原密码不匹配</td>
                                                         <td width="2%">&nbsp;</td>
                                                     </tr>
                                                     <tr>

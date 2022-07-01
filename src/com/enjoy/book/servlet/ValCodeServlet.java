@@ -26,7 +26,7 @@ public class ValCodeServlet extends HttpServlet {
      */
     private String getRandomStr(){
         String str="23456789ABCDEFGHJKMNPQRSTUVWXYZabcdefghgkmnopqrstuvwxyz";//1,0,l o
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();//适用于单线程下在字符串缓冲区进行大量操作
         for(int i=0;i<4;i++){
             int index = random.nextInt(str.length());
             char letter = str.charAt(index);
@@ -34,7 +34,6 @@ public class ValCodeServlet extends HttpServlet {
         }
         return sb.toString();
     }
-
     /**
      * 获取背景颜色 0~ 255
      * @return
@@ -43,11 +42,9 @@ public class ValCodeServlet extends HttpServlet {
         int red = random.nextInt(256);
         int green = random.nextInt(256);
         int blue = random.nextInt(256);
-
         return new Color(red,green,blue);
 
     }
-
     /**
      * 获取前景色
      * @param bgColor
@@ -58,9 +55,7 @@ public class ValCodeServlet extends HttpServlet {
         int green = 255 - bgColor.getGreen();
         int blue = 255 - bgColor.getBlue();
         return new Color(red,green,blue);
-
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -68,15 +63,12 @@ public class ValCodeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
        //1.设置响应格式为图片:jpg
         resp.setContentType("image/jpeg");
         //2.图片对象
         BufferedImage bufferedImage = new BufferedImage(80,30,BufferedImage.TYPE_INT_RGB);
-
         //3.获取画布对象
         Graphics g  = bufferedImage.getGraphics();
-
         //4.设置背景颜色
         Color bgColor = getBackColor();
         g.setColor(bgColor);
@@ -87,14 +79,11 @@ public class ValCodeServlet extends HttpServlet {
         g.setColor(foreColor);
         //设置字体
         g.setFont(new Font("黑体",Font.BOLD,26));
-
         //7.将随机字符串存到session*
         String randomStr = getRandomStr();
         HttpSession session = req.getSession();
         session.setAttribute("code",randomStr);
         g.drawString(randomStr,10,28);
-
-
         //8.噪点(30个白色正方形)
         for(int i=0;i<30;i++){
             g.setColor(Color.white);
@@ -102,7 +91,6 @@ public class ValCodeServlet extends HttpServlet {
             int y = random.nextInt(30);
             g.fillRect(x,y,1,1);
         }
-
         //9.将这个张内存的图片输出到响应流
         ServletOutputStream sos = resp.getOutputStream();
         ImageIO.write(bufferedImage,"jpeg",sos);

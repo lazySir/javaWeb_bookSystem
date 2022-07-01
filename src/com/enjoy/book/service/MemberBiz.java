@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MemberBiz {
   MemberDao  memberDao = new MemberDao();
-  MemberTypeDao   typeDao = new MemberTypeDao();
+  MemberTypeDao   MemberTypeDao = new MemberTypeDao();
   public int add(String name,String pwd,long typeId,double balance,String tel,String idNumber){
     int count = 0;
     try {
@@ -79,7 +79,7 @@ public class MemberBiz {
     Member member = null;
     try {
       member = memberDao.getById(id);
-      MemberType memberType = typeDao.getById(member.getTypeId());
+      MemberType memberType = MemberTypeDao.getById(member.getTypeId());
       member.setType(memberType);
     } catch (SQLException throwables) {
       throwables.printStackTrace();
@@ -95,8 +95,9 @@ public class MemberBiz {
   public Member getByIdNumber(String idNumber){
     Member member = null;
     try {
+      //获取member表中的数据  但是前端页面还需要展示会员类型 member表只有typeid 没有typename所以需要再发请求
       member = memberDao.getByIdNumber(idNumber);
-      MemberType memberType = typeDao.getById(member.getTypeId());
+      MemberType memberType = MemberTypeDao.getById(member.getTypeId());
       member.setType(memberType);
     } catch (SQLException throwables) {
       throwables.printStackTrace();

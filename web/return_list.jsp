@@ -14,7 +14,6 @@
             $("#btnQuery").click(function(){
                 //拿到idn
                 var idn = $("#idNubmer").val();
-
                 //发送请求
                 location.href = "record.let?type=queryback&idn="+idn
             });

@@ -10,18 +10,22 @@
     <script src="./Js/moo.fx.pack.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="./Style/skin.css" />
     <script type="text/javascript">
+        //window.onload :当页面加载完毕之后会执行函数
         window.onload = function () {
+            //获取content和type对象
             var contents = document.getElementsByClassName('content');
             var toggles = document.getElementsByClassName('type');
-
+            //折叠信息  手风琴布局   //duration:秒为单位给出媒体的长度，如果没有媒体数据可用，则为零
             var myAccordion = new fx.Accordion(
-            toggles, contents, {opacity: true, duration: 400}
+            toggles, contents, {opacity: true, duration: 400}//不透明度
             );
+            //target属性:标签内包含一个 target 属性，
+            // 浏览器将会载入和显示用这个标签的 href 属性命名的、名称与这个目标吻合的框架或者窗口中的文档。
             myAccordion.showThisHideOpen(contents[0]);
             for(var i=0; i<document .getElementsByTagName("a").length; i++){
                 var dl_a = document.getElementsByTagName("a")[i];
-                    dl_a.onfocus=function(){
-                        this.blur();
+                    dl_a.onfocus=function(){//获取焦点时触发 颜色变绿
+                        this.blur(); //失去焦点时颜色恢复
                     }
             }
         }

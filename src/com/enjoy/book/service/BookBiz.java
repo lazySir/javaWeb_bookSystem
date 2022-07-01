@@ -121,6 +121,13 @@ public class BookBiz {
             //1.获取行数
             int rowCount = bookDao.getCount();
             //2.根据行数得到页数,每页多少条
+            //(1)(rowCount-1)除不尽pageSize
+            // 且有余数,比如除完得2.333,经java取整后得2,
+            // 我减1都除完都比2大,说明原来2页不够,我得给他+1,
+            // 变成3页与预期一致.
+            //(2)(rowCount-1)能除尽pageSize比如除完得2,
+            // 但我是-1后除的得2,也说明原来2页是不够的,
+            // 所以我给他结果+1,变成3页,与预期一致.
            pageCount =  (rowCount-1)/pageSize+1;
 
         } catch (SQLException throwables) {

@@ -113,7 +113,7 @@ public class TypeServlet extends HttpServlet {
     private void modifyPre(HttpServletRequest req, HttpServletResponse resp,PrintWriter out, ServletContext application) throws ServletException, IOException {
       //1.获取需要修改的type对象的id
       long id = Long.parseLong( req.getParameter("id"));
-      //2.根据id获取type对象
+      //2.根据id获取type对象 service
       Type type = typeBiz.getById(id);
       //3.把type存到req中,同一个功能，req,(session,application太大了，不合适)
         req.setAttribute("type",type);
@@ -132,7 +132,7 @@ public class TypeServlet extends HttpServlet {
         //1.从表单中获取名字和父类型
          String typeName = req.getParameter("typeName");
          long parentId = Long.parseLong(req.getParameter("parentType"));
-        //2.调用biz的添加方法
+        //2.调用biz的添加方法 service
         int count =  typeBiz.add(typeName,parentId);
         //3.更新application中types
         if(count>0){
